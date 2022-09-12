@@ -13,6 +13,7 @@ const rander = db =>{
            <div>id: ${item.id}</div>
            <div>title: ${item.title}</div>
            <div onclick=" checkDatabase(${item.id})"> state:${item.state}</div>
+           <button onclick="deleteitem(${item.id})"> Delete </button>
         </div>
         `
     ))
@@ -20,6 +21,11 @@ const rander = db =>{
 
 const checkDatabase = id=>{
     database=database.map(item=> item.id === id ? {...item,state:!item.state}:item)
+    rander(database)
+}
+
+const deleteitem = id =>{
+    database=database.filter(item =>item.id !== id)
     rander(database)
 }
 
