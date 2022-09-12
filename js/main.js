@@ -1,4 +1,5 @@
-const todocontainer =document.querySelector('#todocontainer');
+const todocontainer = document.querySelector('#todocontainer');
+const todocartcontainer = document.querySelector('#todoCart');
 
 let database = [
     {id:1 , title:'پژو پارس' ,state:false},
@@ -6,6 +7,7 @@ let database = [
     {id:3 , title:'206 تیپ2' ,state:false},
 ];
 const rander = db =>{
+    todocart(db.filter(item => item.state))
     todocontainer.innerHTML = ''
     db.map(item =>(
         todocontainer.innerHTML +=`
@@ -18,6 +20,19 @@ const rander = db =>{
         `
     ))
 };
+const todocart = db =>{
+    todocartcontainer.innerHTML = ''
+    db.map(item =>(
+        todocartcontainer.innerHTML +=`
+        <div class="out">
+           <div>id: ${item.id}</div>
+           <div>title: ${item.title}</div>
+           <div onclick=" checkDatabase(${item.id})"> state:${item.state}</div>
+           <button onclick="deleteitem(${item.id})"> Delete </button>
+        </div>
+        `
+    ))
+}
 
 const checkDatabase = id=>{
     database=database.map(item=> item.id === id ? {...item,state:!item.state}:item)
