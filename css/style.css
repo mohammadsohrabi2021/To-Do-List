@@ -1,0 +1,6 @@
+.out{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 600px;
+}
