@@ -1,10 +1,12 @@
 const todocontainer = document.querySelector('#todocontainer');
 const todocartcontainer = document.querySelector('#todoCart');
+const input =document.querySelector('#input');
+console.log(input);
 
 let database = [
-    {id:1 , title:'پژو پارس' ,state:false},
-    {id:2 , title:'دنا پلاس' ,state:false},
-    {id:3 , title:'206 تیپ2' ,state:false},
+    {id:Math.floor(Math.random()*1000), title:'پژو پارس' ,state:false},
+    {id:Math.floor(Math.random()*1000) , title:'دنا پلاس' ,state:false},
+    {id:Math.floor(Math.random()*1000) , title:'206 تیپ2' ,state:false},
 ];
 const rander = db =>{
     todocart(db.filter(item => item.state))
@@ -13,10 +15,10 @@ const rander = db =>{
     db.map(item =>(
         todocontainer.innerHTML +=`
         <tr>
-           <td class="col-xs- col-lg-2 col-xl-2"> ${item.id}</td>
-           <td class="col-lg-4 col-xl-4"> ${item.title}</td>
-           <td class="col-lg-4 col-xl-4" onclick=" checkDatabase(${item.id})"> ${item.state}</td>
-           <td class="col-lg-2 col-xl-2"><button class="btn  border-0 m-2" onclick="deletetodo(${item.id})"><i class="fa-solid fa-trash"></i>  </button></td>
+           <td> ${item.id}</td>
+           <td> ${item.title}</td>
+           <td onclick=" checkDatabase(${item.id})"> <i class="fa-solid fa-cart-shopping"></i></td>
+           <td ><button class="btn  border-0 m-2" onclick="deletetodo(${item.id})"><i class="fa-solid fa-trash"></i>  </button></td>
         </tr>
         
         `
@@ -45,6 +47,10 @@ const deletetodo= id =>{
     rander(database)
 }
 
-
+const addtodo = () =>{
+  database =[...database ,{id:Math.floor(Math.random()*1000),title:input.value,state:false}]
+  input.value=''
+   rander(database)
+}
 
 rander(database);
