@@ -3,6 +3,12 @@ const todocartcontainer = document.querySelector('#todoCart');
 const input =document.querySelector('#input');
 const Search =document.querySelector('#Search');
 
+Search.addEventListener('keyup',(e)=>{
+    search=e.target.value;
+    rander(database)
+})
+let search ='';
+
 let database = [
     {id:Math.floor(Math.random()*1000), title:'پژو پارس' ,state:false},
     {id:Math.floor(Math.random()*1000) , title:'دنا پلاس' ,state:false},
@@ -12,7 +18,7 @@ const rander = db =>{
     todocart(db.filter(item => item.state))
     todocontainer.innerHTML = ''
    
-    db.map(item =>(
+    db.filter(item =>item.title.toUpperCase().includes(search.toUpperCase())).map(item =>(
         todocontainer.innerHTML +=`
         <tr>
            <td> ${item.id}</td>
