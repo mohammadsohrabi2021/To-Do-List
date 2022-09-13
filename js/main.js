@@ -1,7 +1,7 @@
 const todocontainer = document.querySelector('#todocontainer');
 const todocartcontainer = document.querySelector('#todoCart');
 const input =document.querySelector('#input');
-console.log(input);
+const Search =document.querySelector('#Search');
 
 let database = [
     {id:Math.floor(Math.random()*1000), title:'پژو پارس' ,state:false},

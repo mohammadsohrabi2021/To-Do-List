@@ -10,16 +10,16 @@
     <title>ToDoList</title>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light ">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">ToDoList</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <form class="d-flex my-5">
-          <input class="form-control me-2 " type="search" id="Search" placeholder="Search" >
-          <button class="btn btn-outline-success " type="submit">Search</button>
+        <form class="d-flex">
+          <input class="form-control me-1" type="search" id="Search" placeholder="جستجو در خودروها" dir="rtl" >
+          <button class="btn btn-outline-success " type="submit">search</button>
         </form>
       </div>
     </div>
@@ -34,7 +34,7 @@
              <th>حذف از لیست خودرو </th>
              <th>
               <input style="outline: none; border: 0; " type="text" name="additem" id="input">
-              <button class="btn btn-success mx-1" id="input" onclick="addtodo()">add item</button>
+              <button class="border-0 bg-primary mx-1 rounded text-white" id="input" onclick="addtodo()">New +</button>
              </th>
            </tr>
         </thead>
