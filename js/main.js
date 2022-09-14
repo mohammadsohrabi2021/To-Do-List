@@ -3,6 +3,8 @@ const todocartcontainer = document.querySelector('#todoCart');
 const input =document.querySelector('#input');
 const Search =document.querySelector('#Search');
 const SearchtodoCart =document.querySelector('#SearchtodoCart')
+const remaindtodo=document.querySelector('#remaindtodo')
+const remaindtodoContainer= document.querySelector('#remaindtodoContainer')
 
 SearchtodoCart.addEventListener('keyup',(e)=>{
    searchtodoCart=e.target.value;
@@ -23,8 +25,10 @@ let database = [
 ];
 const rander = db =>{
     todocart(db.filter(item => item.state))
+    todoremaind(db.filter(item => item.state))
+    todoremaindcontainer(db.map(item => item.state))
     todocontainer.innerHTML = ''
-   
+    
     db.filter(item =>item.title.toUpperCase().includes(search.toUpperCase())).map(item =>(
         todocontainer.innerHTML +=`
         <tr>
@@ -36,6 +40,7 @@ const rander = db =>{
         
         `
     ))
+   
 };
 const todocart = db =>{
     todocartcontainer.innerHTML = ''
@@ -70,7 +75,11 @@ const deleteall =()=>{
     rander(database);
 }
 
-// const remainingItems = ()=>{
+const todoremaind = db =>{
+    remaindtodo.innerHTML =`${db.length} تعداد کالا های ثبت شده`
+}
+const todoremaindcontainer = db =>{
+    remaindtodoContainer.innerHTML =`${db.length} تعداد کالا های ثبت شده`
+}
 
-// }
 rander(database);
