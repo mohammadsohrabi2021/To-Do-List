@@ -2,13 +2,13 @@ const todocontainer = document.querySelector('#todocontainer');
 const todocartcontainer = document.querySelector('#todoCart');
 const input =document.querySelector('#input');
 const Search =document.querySelector('#Search');
-// const SearchtodoCart =document.querySelector('#SearchtodoCart')
+const SearchtodoCart =document.querySelector('#SearchtodoCart')
 
-// SearchtodoCart.addEventListener('keyup',(e)=>{
-//    searchtodoCart=e.target.value;
-//     rander(database)
-// })
-// let searchtodoCart ='';
+SearchtodoCart.addEventListener('keyup',(e)=>{
+   searchtodoCart=e.target.value;
+    rander(database)
+})
+let searchtodoCart ='';
 
 Search.addEventListener('keyup',(e)=>{
     search=e.target.value;
@@ -39,7 +39,7 @@ const rander = db =>{
 };
 const todocart = db =>{
     todocartcontainer.innerHTML = ''
-    db.map(item =>(
+    db.filter(item =>item.title.toUpperCase().includes(searchtodoCart.toUpperCase())).map(item =>(
         todocartcontainer.innerHTML +=`
         <tr>
          <td> ${item.id}</td>
