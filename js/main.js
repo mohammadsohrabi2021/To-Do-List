@@ -2,6 +2,13 @@ const todocontainer = document.querySelector('#todocontainer');
 const todocartcontainer = document.querySelector('#todoCart');
 const input =document.querySelector('#input');
 const Search =document.querySelector('#Search');
+// const SearchtodoCart =document.querySelector('#SearchtodoCart')
+
+// SearchtodoCart.addEventListener('keyup',(e)=>{
+//    searchtodoCart=e.target.value;
+//     rander(database)
+// })
+// let searchtodoCart ='';
 
 Search.addEventListener('keyup',(e)=>{
     search=e.target.value;
@@ -58,5 +65,12 @@ const addtodo = () =>{
   input.value=''
    rander(database)
 }
+const deleteall =()=>{
+    database =[]
+    rander(database);
+}
 
+// const remainingItems = ()=>{
+
+// }
 rander(database);
