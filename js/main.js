@@ -5,6 +5,7 @@ const Search =document.querySelector('#Search');
 const SearchtodoCart =document.querySelector('#SearchtodoCart')
 const remaindtodo=document.querySelector('#remaindtodo')
 const remaindtodoContainer= document.querySelector('#remaindtodoContainer')
+const todonotdonecontainer=document.querySelector('#todoNotDonecontant')
 
 SearchtodoCart.addEventListener('keyup',(e)=>{
    searchtodoCart=e.target.value;
@@ -27,6 +28,7 @@ const rander = db =>{
     todocart(db.filter(item => item.state))
     todoremaind(db.filter(item => item.state))
     todoremaindcontainer(db.map(item => item.state))
+    renderdeldelete(db.filter(item => !item.state))
     todocontainer.innerHTML = ''
     
     db.filter(item =>item.title.toUpperCase().includes(search.toUpperCase())).map(item =>(
@@ -34,7 +36,7 @@ const rander = db =>{
         <tr>
            <td> ${item.id}</td>
            <td> ${item.title}</td>
-           <td onclick=" checkDatabase(${item.id})"> <i class="fa-solid fa-cart-shopping"></i></td>
+           <td  style="cursor: pointer;" onclick=" checkDatabase(${item.id})"> <i class="fa-solid fa-cart-shopping"></i> </td>
            <td ><button class="btn  border-0 m-2" onclick="deletetodo(${item.id})"><i class="fa-solid fa-trash"></i>  </button></td>
         </tr>
         
@@ -49,11 +51,34 @@ const todocart = db =>{
         <tr>
          <td> ${item.id}</td>
          <td> ${item.title}</td>
-         <td><button class="btn  border-0 m-2"onclick=" checkDatabase(${item.id})""><i class="fa-solid fa-trash"></i> </button></td>
+         <td><button class="btn  border-0 m-2"onclick=" checkDatabase(${item.id})""><i class="fa-solid fa-trash"></i>  </button></td>
         </tr>
         `
     ))
 }
+
+const renderdeldelete = db =>{
+    todonotdonecontainer.innerHTML = ''
+    db.map(item => {
+        todonotdonecontainer.innerHTML += `
+        <tr >
+                
+        <td>
+             ${item.id}
+        </td>
+        <td>
+           ${item.title}
+        </td>
+        <td style="cursor: pointer;"  onclick="checkDatabase(${item.id})">
+       لغو شدن از سبد خرید<i class="fa-regular fa-thumbs-down"></i>
+        </td>
+        </tr>
+
+                 `
+    })
+}
+
+
 
 const checkDatabase = id=>{
     database=database.map(item=> item.id === id ? {...item,state:!item.state}:item)
@@ -81,5 +106,6 @@ const todoremaind = db =>{
 const todoremaindcontainer = db =>{
     remaindtodoContainer.innerHTML =`${db.length} تعداد کالا های ثبت شده`
 }
+
 
 rander(database);
